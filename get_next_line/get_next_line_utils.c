@@ -6,11 +6,26 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:19:32 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/10 19:28:16 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/23 22:17:46 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == (char)c)
+		{
+			return ((char *)s);
+		}
+		s++;
+	}
+	if (c == '\0')
+		return ((char *)s);
+	return (NULL);
+}
 
 int	ft_strlen(const char *str)
 {
@@ -74,27 +89,21 @@ char	*ft_strjoin_and_free(char *s1, char const *s2)
 	return (new_s);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t			i;
-	unsigned char	*ptr;
+	void	*ptr;
+	size_t	i;
 
-	ptr = (unsigned char *)s;
 	i = 0;
-	while (i < n)
+	if (size != 0 && nmemb > SIZE_MAX / size)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	if (!ptr)
+		return (NULL);
+	while (i < nmemb * size)
 	{
-		ptr[i] = '\0';
+		((unsigned char *)ptr)[i] = 0;
 		i++;
 	}
-}
-
-char	*ft_calloc(size_t elementCount, size_t elementSize)
-{
-	char	*buffer;
-
-	buffer = malloc(elementSize * elementCount);
-	if (!buffer)
-		return (NULL);
-	ft_bzero(buffer, elementSize * elementCount);
-	return (buffer);
+	return (ptr);
 }
