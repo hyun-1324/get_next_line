@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:08:24 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/23 22:37:08 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/24 17:06:20 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ char	*ft_strjoin_and_free(char *s1, char const *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strdup(char *src);
 char	*ft_strchr(const char *s, int c);
+int		ft_strlen(const char *str);
 
 char	*save_file(int fd, char *buffer);
 char	*save_lines(int fd, char *buffer, char *tmp_buffer);
