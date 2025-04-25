@@ -6,11 +6,12 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:17:36 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/25 21:52:16 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 22:00:44 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
+
 void	delete_copied_line(char **buffer, size_t *i, char **line)
 {
 	char	*tmp;
