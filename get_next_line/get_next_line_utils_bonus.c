@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:18:50 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/25 21:48:46 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 23:53:59 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,32 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(char *buffer)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int		len;
-	int		i;
-	char	*str;
+	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
-	len = 0;
-	i = 0;
-	len = ft_strlen(buffer);
-	str = (char *)malloc((len + 1) * sizeof(char));
-	if (!str)
-		return (NULL);
-	while (buffer[i])
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (d == s || n == 0)
+		return (dest);
+	if (s < d)
 	{
-		str[i] = buffer[i];
-		i++;
+		i = n;
+		while (i-- > 0)
+			d[i] = s[i];
 	}
-	str[i] = '\0';
-	return (str);
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	return (dest);
 }
 
 char	*ft_strjoin_and_free(char *buffer, \

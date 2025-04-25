@@ -6,24 +6,27 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:06:35 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/25 23:27:28 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 23:50:43 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	delete_copied_line(char **buffer, size_t *i, char **line)
+void	delete_copied_line(char **buffer, size_t *len)
 {
-	char	*tmp;
+	int		rest_len;
+	char	*bzero_char;
+	size_t	bzero_i;
 
-	tmp = ft_strdup(&(*buffer)[*i]);
-	free(*buffer);
-	if (!tmp)
+	rest_len = ft_strlen(*buffer + *len);
+	ft_memmove(*buffer, *buffer + *len, rest_len + 1);
+	bzero_char = *buffer + rest_len;
+	bzero_i = 0;
+	while (bzero_i < *len)
 	{
-		free(*line);
-		*line = NULL;
+		bzero_char[bzero_i] = '\0';
+		bzero_i++;
 	}
-	*buffer = tmp;
 }
 
 char	*copy_line(char **buffer, size_t	*i)
@@ -115,6 +118,6 @@ char	*get_next_line(int fd)
 	line = copy_line(&buffer, &next_line_i);
 	if (!line)
 		return (NULL);
-	delete_copied_line(&buffer, &next_line_i, &line);
+	delete_copied_line(&buffer, &next_line_i);
 	return (line);
 }
