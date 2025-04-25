@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:06:35 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/25 22:22:16 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 22:58:22 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	save_file(int fd, char **buffer)
 	}
 	*buffer = save_lines(fd, *buffer, tmp_buffer);
 	free(tmp_buffer);
-	if ((*buffer)[0] == '\0')
+	if (!*buffer || (*buffer)[0] == '\0')
 	{
 		free(*buffer);
 		*buffer = NULL;
