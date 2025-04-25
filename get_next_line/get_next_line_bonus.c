@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:17:36 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/25 23:00:11 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 23:13:55 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,7 @@ void	save_file(int fd, char **buffer)
 	if (!*buffer)
 		*buffer = ft_calloc(1, 1);
 	if (!*buffer)
-	{
-		*buffer = NULL;
 		return ;
-	}
 	tmp_buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!tmp_buffer)
 	{
