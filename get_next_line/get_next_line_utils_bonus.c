@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:18:50 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/23 22:36:18 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 21:48:46 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(char *buffer)
 {
 	int		len;
 	int		i;
@@ -48,44 +48,46 @@ char	*ft_strdup(char *src)
 
 	len = 0;
 	i = 0;
-	len = ft_strlen(src);
+	len = ft_strlen(buffer);
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	while (src[i])
+	while (buffer[i])
 	{
-		str[i] = src[i];
+		str[i] = buffer[i];
 		i++;
 	}
 	str[i] = '\0';
 	return (str);
 }
 
-char	*ft_strjoin_and_free(char *s1, char const *s2)
+char	*ft_strjoin_and_free(char *buffer, \
+		char const *tmp_buffer, int *buffer_len, int *tmp_len)
 {
-	int		len1;
-	int		len2;
 	int		i;
 	char	*new_s;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	new_s = (char *)malloc((len1 + len2 + 1) * sizeof(char));
+	*buffer_len = ft_strlen(buffer);
+	*tmp_len = ft_strlen(tmp_buffer);
+	new_s = (char *)malloc((*buffer_len + *tmp_len + 1) * sizeof(char));
 	if (!new_s)
-		return (NULL);
-	i = 0;
-	while (i < len1)
 	{
-		new_s[i] = s1[i];
+		free(buffer);
+		return (NULL);
+	}
+	i = 0;
+	while (i < *buffer_len)
+	{
+		new_s[i] = buffer[i];
 		i++;
 	}
-	while (i < len1 + len2)
+	while (i < *buffer_len + *tmp_len)
 	{
-		new_s[i] = s2[i - len1];
+		new_s[i] = tmp_buffer[i - *buffer_len];
 		i++;
 	}
 	new_s[i] = '\0';
-	free(s1);
+	free(buffer);
 	return (new_s);
 }
 
