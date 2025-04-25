@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:08:24 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/24 17:06:20 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 10:22:30 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 char	*get_next_line(int fd);
 char	*ft_strjoin_and_free(char *s1, char const *s2);

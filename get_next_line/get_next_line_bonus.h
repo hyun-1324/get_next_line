@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:08:24 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/24 17:07:30 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/25 10:22:27 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 # ifndef OPEN_MAX
 #  define OPEN_MAX 1024
