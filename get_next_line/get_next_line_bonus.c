@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:17:36 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/25 23:53:21 by donheo           ###   ########.fr       */
+/*   Updated: 2025/04/26 00:06:53 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	delete_copied_line(char **buffer, size_t *len)
 
 	rest_len = ft_strlen(*buffer + *len);
 	ft_memmove(*buffer, *buffer + *len, rest_len + 1);
-	bzero_char = *buffer + rest_len;
+	bzero_char = *buffer + rest_len + 1;
 	bzero_i = 0;
 	while (bzero_i < *len)
 	{
