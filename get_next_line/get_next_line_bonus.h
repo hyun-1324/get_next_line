@@ -37,5 +37,4 @@ char	*save_lines(int fd, char *buffer, char *tmp_buffer);
 void	save_file(int fd, char **buffer);
 char	*get_next_line(int fd);
 
-
 #endif
