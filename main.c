@@ -27,48 +27,48 @@ int	main(void)
 		return (1);
 	}
 
-	// while ((line = get_next_line(fd)) != NULL && (line2 = get_next_line(fd2)) != NULL)
-	// {
-	// 	printf("line %d: %s", line_num++, line);
-	// 	free(line);
-	// 	printf("line %d: %s", line_num2++, line2);
-	// 	free(line2);
-	// }
-
-	 if ((line = get_next_line(fd)) != NULL)
-	 {
+	while ((line = get_next_line(fd)) != NULL && (line2 = get_next_line(fd2)) != NULL)
+	{
 		printf("line %d: %s", line_num++, line);
 		free(line);
-	 }
-
-	if ((line2 = get_next_line(fd2)) != NULL)
-	{
 		printf("line %d: %s", line_num2++, line2);
 		free(line2);
 	}
 
-	 if ((line = get_next_line(fd)) != NULL)
-	 {
-		printf("line %d: %s", line_num++, line);
-		free(line);
-	 }
+// 	 if ((line = get_next_line(fd)) != NULL)
+// 	 {
+// 		printf("line %d: %s", line_num++, line);
+// 		free(line);
+// 	 }
 
-	 	if ((line2 = get_next_line(fd2)) != NULL)
-	{
-		printf("line %d: %s", line_num2++, line2);
-		free(line2);
-	}
-	if ((line = get_next_line(fd)) != NULL)
-	{
-	   printf("line %d: %s", line_num++, line);
-	   free(line);
-	}
+// 	if ((line2 = get_next_line(fd2)) != NULL)
+// 	{
+// 		printf("line %d: %s", line_num2++, line2);
+// 		free(line2);
+// 	}
 
-		if ((line2 = get_next_line(fd2)) != NULL)
-   {
-	   printf("line %d: %s", line_num2++, line2);
-	   free(line2);
-   }
+// 	 if ((line = get_next_line(fd)) != NULL)
+// 	 {
+// 		printf("line %d: %s", line_num++, line);
+// 		free(line);
+// 	 }
+
+// 	 	if ((line2 = get_next_line(fd2)) != NULL)
+// 	{
+// 		printf("line %d: %s", line_num2++, line2);
+// 		free(line2);
+// 	}
+// 	if ((line = get_next_line(fd)) != NULL)
+// 	{
+// 	   printf("line %d: %s", line_num++, line);
+// 	   free(line);
+// 	}
+
+// 		if ((line2 = get_next_line(fd2)) != NULL)
+//    {
+// 	   printf("line %d: %s", line_num2++, line2);
+// 	   free(line2);
+//    }
 
 
 	close(fd);
