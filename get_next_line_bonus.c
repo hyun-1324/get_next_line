@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 09:17:36 by donheo            #+#    #+#             */
-/*   Updated: 2025/05/24 21:27:47 by donheo           ###   ########.fr       */
+/*   Updated: 2025/05/24 21:33:07 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,22 +78,22 @@ static char	*save_lines(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*line;
 	size_t		line_len;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!buffer)
-		buffer = ft_calloc(1, 1);
-	if (!buffer)
+	if (!buffer[fd])
+		buffer[fd] = ft_calloc(1, 1);
+	if (!buffer[fd])
 		return (NULL);
-	buffer = save_lines(fd, buffer);
-	if (!buffer || buffer[0] == '\0')
-		return (free(buffer), buffer = NULL, NULL);
-	line = copy_line(&buffer, &line_len);
+	buffer[fd] = save_lines(fd, buffer[fd]);
+	if (!buffer[fd] || (buffer[fd])[0] == '\0')
+		return (free(buffer[fd]), buffer[fd] = NULL, NULL);
+	line = copy_line(&buffer[fd], &line_len);
 	if (!line)
-		return (free(buffer), buffer = NULL, NULL);
-	delete_copied_line(&buffer, &line_len);
+		return (free(buffer[fd]), buffer[fd] = NULL, NULL);
+	delete_copied_line(&buffer[fd], &line_len);
 	return (line);
 }
