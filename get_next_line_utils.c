@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 12:19:32 by donheo            #+#    #+#             */
-/*   Updated: 2025/04/25 23:48:49 by donheo           ###   ########.fr       */
+/*   Updated: 2025/05/24 21:23:02 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,28 +69,28 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 }
 
 char	*ft_strjoin_and_free(char *buffer, \
-		char const *tmp_buffer, int *buffer_len, int *tmp_len)
+		char const *tmp_buffer, int buffer_len, int tmp_len)
 {
 	int		i;
 	char	*new_s;
 
-	*buffer_len = ft_strlen(buffer);
-	*tmp_len = ft_strlen(tmp_buffer);
-	new_s = (char *)malloc((*buffer_len + *tmp_len + 1) * sizeof(char));
+	buffer_len = ft_strlen(buffer);
+	tmp_len = ft_strlen(tmp_buffer);
+	new_s = (char *)malloc((buffer_len + tmp_len + 1) * sizeof(char));
 	if (!new_s)
 	{
 		free(buffer);
 		return (NULL);
 	}
 	i = 0;
-	while (i < *buffer_len)
+	while (i < buffer_len)
 	{
 		new_s[i] = buffer[i];
 		i++;
 	}
-	while (i < *buffer_len + *tmp_len)
+	while (i < buffer_len + tmp_len)
 	{
-		new_s[i] = tmp_buffer[i - *buffer_len];
+		new_s[i] = tmp_buffer[i - buffer_len];
 		i++;
 	}
 	new_s[i] = '\0';
