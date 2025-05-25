@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static void	delete_copied_line(char *buffer, size_t line_len)
 {
@@ -29,7 +29,7 @@ static char	*copy_line(const char *buffer, size_t	*line_len)
 		(*line_len)++;
 	if (buffer[*line_len] == '\n')
 		(*line_len)++;
-	line = ft_calloc(*line_len + 1, sizeof(char));
+	line = malloc((*line_len + 1) *sizeof(char));
 	if (!line)
 		return (NULL);
 	*line_len = 0;
@@ -40,6 +40,7 @@ static char	*copy_line(const char *buffer, size_t	*line_len)
 	}
 	if (buffer[*line_len] && buffer[*line_len] == '\n')
 		line[(*line_len)++] = '\n';
+	line[*line_len] = '\0';
 	return (line);
 }
 
@@ -75,9 +76,12 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buffer[fd])
-		buffer[fd] = ft_calloc(1, 1);
-	if (!buffer[fd])
-		return (NULL);
+	{
+		buffer[fd] = malloc(1);
+		if (!buffer[fd])
+			return (NULL);
+		buffer[fd][0] = '\0';
+	}
 	buffer[fd] = save_lines(fd, buffer[fd]);
 	if (!buffer[fd] || buffer[fd][0] == '\0')
 		return (free(buffer[fd]), buffer[fd] = NULL, NULL);

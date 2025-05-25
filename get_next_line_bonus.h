@@ -29,7 +29,6 @@ int		ft_strlen(const char *str);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 char	*ft_strjoin_and_free(char *buffer, \
 		char const *tmp_buffer, int buffer_len, int tmp_len);
-void	*ft_calloc(size_t nmemb, size_t size);
 
 char	*get_next_line(int fd);
 

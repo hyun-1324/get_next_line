@@ -32,11 +32,8 @@ int	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while (*str)
-	{
+	while (str[i])
 		i++;
-		str++;
-	}
 	return (i);
 }
 
@@ -96,23 +93,4 @@ char	*ft_strjoin_and_free(char *buffer, \
 	new_s[i] = '\0';
 	free(buffer);
 	return (new_s);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*ptr;
-	size_t	i;
-
-	i = 0;
-	if (size != 0 && nmemb > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	while (i < nmemb * size)
-	{
-		((unsigned char *)ptr)[i] = 0;
-		i++;
-	}
-	return (ptr);
 }

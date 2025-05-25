@@ -29,7 +29,7 @@ static char	*copy_line(const char *buffer, size_t	*line_len)
 		(*line_len)++;
 	if (buffer[*line_len] == '\n')
 		(*line_len)++;
-	line = ft_calloc(*line_len + 1, sizeof(char));
+	line = malloc((*line_len + 1) *sizeof(char));
 	if (!line)
 		return (NULL);
 	*line_len = 0;
@@ -40,6 +40,7 @@ static char	*copy_line(const char *buffer, size_t	*line_len)
 	}
 	if (buffer[*line_len] && buffer[*line_len] == '\n')
 		line[(*line_len)++] = '\n';
+	line[*line_len] = '\0';
 	return (line);
 }
 
@@ -75,9 +76,12 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buffer)
-		buffer = ft_calloc(1, 1);
-	if (!buffer)
-		return (NULL);
+	{
+		buffer = malloc(1);
+		if (!buffer)
+			return (NULL);
+		buffer[0] = '\0';
+	}
 	buffer = save_lines(fd, buffer);
 	if (!buffer || buffer[0] == '\0')
 		return (free(buffer), buffer = NULL, NULL);
