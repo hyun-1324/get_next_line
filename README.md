@@ -9,9 +9,9 @@ A lightweight C library that provides a `get_next_line()` function to read a fil
 `get_next_line()` reads and returns the next line from a file or standard input — one call, one line.
 It handles all the behind-the-scenes work: buffering, memory management, partial reads, and newline detection.
 
-✔️ Reads from any valid file descriptor
-✔️ Handles very large or very small buffers
-✔️ Returns lines that include the newline character `\n` if present
+✔️ Reads from any valid file descriptor  
+✔️ Handles very large or very small buffers  
+✔️ Returns lines that include the newline character `\n` if present  
 ✔️ Returns `NULL` when there is nothing left to read
 
 ---
