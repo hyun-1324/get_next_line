@@ -1,6 +1,6 @@
 # get_next_line
 
-A lightweight C library that provides a `get_next_line()` function to read a file line by line. It’s designed to be simple, efficient, and reusable in any C project.
+A lightweight C library that provides a `get_next_line()` function to read a file line by line.
 
 ---
 
