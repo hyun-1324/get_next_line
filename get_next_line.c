@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:06:35 by donheo            #+#    #+#             */
-/*   Updated: 2025/05/24 21:27:10 by donheo           ###   ########.fr       */
+/*   Updated: 2025/05/25 10:22:15 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*copy_line(const char *buffer, size_t	*line_len)
 		(*line_len)++;
 	if (buffer[*line_len] == '\n')
 		(*line_len)++;
-	line = malloc((*line_len + 1) *sizeof(char));
+	line = malloc((*line_len + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	*line_len = 0;
