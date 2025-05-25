@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static void	delete_copied_line(char *buffer, size_t line_len)
 {
@@ -29,7 +29,7 @@ static char	*copy_line(const char *buffer, size_t	*line_len)
 		(*line_len)++;
 	if (buffer[*line_len] == '\n')
 		(*line_len)++;
-	line = malloc((*line_len + 1) *sizeof(char));
+	line = malloc((*line_len + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	*line_len = 0;
