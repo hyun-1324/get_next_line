@@ -12,42 +12,33 @@
 
 #include "get_next_line.h"
 
-static void	delete_copied_line(char **buffer, size_t *line_len)
+static void	delete_copied_line(char *buffer, size_t line_len)
 {
 	int		rest_len;
-	char	*bzero_char;
-	size_t	bzero_i;
 
-	rest_len = ft_strlen(*buffer + *line_len);
-	ft_memmove(*buffer, *buffer + *line_len, rest_len + 1);
-	bzero_char = *buffer + rest_len + 1;
-	bzero_i = 0;
-	while (bzero_i < *line_len)
-	{
-		bzero_char[bzero_i] = '\0';
-		bzero_i++;
-	}
+	rest_len = ft_strlen(buffer + line_len);
+	ft_memmove(buffer, buffer + line_len, rest_len + 1);
 }
 
-static char	*copy_line(char **buffer, size_t	*line_len)
+static char	*copy_line(const char *buffer, size_t	*line_len)
 {
 	char	*line;
 
 	*line_len = 0;
-	while ((*buffer)[*line_len] && (*buffer)[*line_len] != '\n')
+	while (buffer[*line_len] && buffer[*line_len] != '\n')
 		(*line_len)++;
-	if ((*buffer)[*line_len] == '\n')
+	if (buffer[*line_len] == '\n')
 		(*line_len)++;
 	line = ft_calloc(*line_len + 1, sizeof(char));
 	if (!line)
 		return (NULL);
 	*line_len = 0;
-	while ((*buffer)[*line_len] && (*buffer)[*line_len] != '\n')
+	while (buffer[*line_len] && buffer[*line_len] != '\n')
 	{
-		line[*line_len] = (*buffer)[*line_len];
+		line[*line_len] = buffer[*line_len];
 		(*line_len)++;
 	}
-	if ((*buffer)[*line_len] && (*buffer)[*line_len] == '\n')
+	if (buffer[*line_len] && buffer[*line_len] == '\n')
 		line[(*line_len)++] = '\n';
 	return (line);
 }
@@ -90,9 +81,9 @@ char	*get_next_line(int fd)
 	buffer = save_lines(fd, buffer);
 	if (!buffer || buffer[0] == '\0')
 		return (free(buffer), buffer = NULL, NULL);
-	line = copy_line(&buffer, &line_len);
+	line = copy_line(buffer, &line_len);
 	if (!line)
 		return (free(buffer), buffer = NULL, NULL);
-	delete_copied_line(&buffer, &line_len);
+	delete_copied_line(buffer, line_len);
 	return (line);
 }
