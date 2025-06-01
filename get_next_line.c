@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:06:35 by donheo            #+#    #+#             */
-/*   Updated: 2025/06/01 21:43:14 by donheo           ###   ########.fr       */
+/*   Updated: 2025/06/01 21:49:10 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (free(buffer), buffer = NULL, NULL);
 	delete_copied_line(buffer, line_len);
-	if (!ft_stchr(line, '\n'))
+	if (!ft_strchr(line, '\n'))
 		return (free(buffer), buffer = NULL, line);
 	return (line);
 }
