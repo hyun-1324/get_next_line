@@ -6,7 +6,7 @@
 /*   By: donheo <donheo@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:06:35 by donheo            #+#    #+#             */
-/*   Updated: 2025/05/25 10:22:15 by donheo           ###   ########.fr       */
+/*   Updated: 2025/06/01 21:41:13 by donheo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static char	*copy_line(const char *buffer, size_t	*line_len)
 static char	*save_lines(int fd, char *buffer)
 {
 	int		read_bytes;
-	char	*tmp_buffer;
+	char	*tmp_buffer;	if (!ft_stchr(line, '\n'))
+		return (free(buffer), buffer = NULL, );
 
 	tmp_buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!tmp_buffer)
@@ -89,5 +90,7 @@ char	*get_next_line(int fd)
 	if (!line)
 		return (free(buffer), buffer = NULL, NULL);
 	delete_copied_line(buffer, line_len);
+	if (!ft_stchr(line, '\n'))
+		return (free(buffer), buffer = NULL, line);
 	return (line);
 }
